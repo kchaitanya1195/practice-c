@@ -8,6 +8,8 @@ class TreeNode {
         TreeNode *left, *right, *parent;
 
         TreeNode(int d, TreeNode *par = NULL);
+
+        bool isRightChild();
 };
 
 class BinaryTree {
@@ -22,6 +24,7 @@ class BinaryTree {
         TreeNode *findNode(int data) { return findNode(data, root); }
         void deleteNode(TreeNode *node) ;
         void deleteData(int data);
+        void replace(TreeNode *node, TreeNode *newNode);
         bool has(int data) { return has(data, root); }
         int height() { return height(root); }
         void inorder() { inorder(root); }
@@ -59,5 +62,5 @@ class BalancedBinaryTree: public BinaryTree {
         BalancedBinaryTree(TreeNode *r):BinaryTree(r) {}
 
     private:
-        void insertBackTrack(TreeNode *node) {  }
+        void insertBackTrack(TreeNode *node);
 };

@@ -5,6 +5,9 @@ TreeNode::TreeNode(int d, TreeNode *par) {
     parent = par;
     left = right = NULL;
 }
+bool TreeNode::isRightChild() {
+    return parent->right == this;
+}
 
 void BinaryTree::insert(int data, TreeNode **curr, TreeNode *par) {
     if (!(*curr)) {
@@ -34,13 +37,31 @@ TreeNode *BinaryTree::findNode(int data, TreeNode *curr) {
         return found;
 }
 void BinaryTree::deleteNode(TreeNode *node) {
-    TreeNode *par = node->parent;
     if (isLeaf(node)) {
-        if (par->right == node)
-            par->right = NULL;
-        else
-            par->left = NULL;
+        replace(node, NULL);
+    } else if (!node->right) {
+        replace(node, node->left);
+    } else if (!node->left) {
+        replace(node, node->right);
+    } else {
+        TreeNode *min = minNode(node->right);
+        node->data = min->data;
+        deleteNode(min);
     }
+}
+void BinaryTree::replace(TreeNode *node, TreeNode *newNode) {
+    if (node == root) {
+        root = newNode;
+        node = NULL;
+        return;
+    }
+    if (node->isRightChild()) 
+        node->parent->right = newNode;
+    else
+        node->parent->left = newNode;
+    if (newNode)
+        newNode->parent = node->parent;
+    node = NULL;
 }
 void BinaryTree::deleteData(int data) {
     TreeNode *node = findNode(data);
