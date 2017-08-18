@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stddef.h>
-using namespace std;
+using std::cout;
 
 class Node {
     public:

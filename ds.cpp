@@ -3,6 +3,14 @@
 using namespace std;
 
 int main(){
+    testStack();
+    return 0;
+}
+
+void testStack(){
+
+}
+void testBinaryTree(){
     const int n = 6;
     int a[n] = {1,2,3,4,5,6};
     BinaryTree *bt = new BinaryTree;
@@ -25,5 +33,4 @@ int main(){
     //bt->deleteData(23);
     //bt->printVertTree();
     bbt->printVertTree();
-    return 0;
 }
