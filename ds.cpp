@@ -10,9 +10,19 @@ int main(){
     for (int i = 0; i < n; i++) {
         bt->insert(a[i]);
     }
-    printTree(bt->root, 0);
-    cout<<bt->has(8)<<endl;
+    //bt->printTree();
+    bt->printVertTree();
+    /*cout<<bt->has(8)<<endl;
     cout<<bt->has(10)<<endl;
     cout<<bt->height()<<endl;
+    bt->inorder();
+    bt->preorder();
+    bt->postorder();*/
+    //cout<<bt->maxNode()->data<<endl;
+    //cout<<bt->minNode()->data<<endl;
+    //bbt->insert(10);
+    bt->deleteData(11);
+    bt->deleteData(28);
+    bt->printVertTree();
     return 0;
 }
