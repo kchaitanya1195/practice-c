@@ -3,15 +3,16 @@
 using namespace std;
 
 int main(){
-    const int n = 10;
-    int a[n] = {23, 45, 11, 19, 8, 35, 14, 9, 28, 64};
+    const int n = 6;
+    int a[n] = {1,2,3,4,5,6};
     BinaryTree *bt = new BinaryTree;
     BalancedBinaryTree *bbt = new BalancedBinaryTree;
     for (int i = 0; i < n; i++) {
         bt->insert(a[i]);
+        bbt->insert(a[i]);
     }
     //bt->printTree();
-    bt->printVertTree();
+    //bt->printVertTree();
     /*cout<<bt->has(8)<<endl;
     cout<<bt->has(10)<<endl;
     cout<<bt->height()<<endl;
@@ -21,7 +22,8 @@ int main(){
     //cout<<bt->maxNode()->data<<endl;
     //cout<<bt->minNode()->data<<endl;
     //bbt->insert(10);
-    bt->deleteData(23);
-    bt->printVertTree();
+    //bt->deleteData(23);
+    //bt->printVertTree();
+    bbt->printVertTree();
     return 0;
 }

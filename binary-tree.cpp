@@ -12,7 +12,7 @@ bool TreeNode::isRightChild() {
 void BinaryTree::insert(int data, TreeNode **curr, TreeNode *par) {
     if (!(*curr)) {
         *curr = new TreeNode(data, par);
-        insertBackTrack(*curr);
+        backTrack(*curr);
         return;
     }
 
@@ -21,7 +21,7 @@ void BinaryTree::insert(int data, TreeNode **curr, TreeNode *par) {
     else
         insert(data, &((*curr)->left), *curr);
 
-    insertBackTrack(*curr);
+    backTrack(*curr);
 }
 TreeNode *BinaryTree::findNode(int data, TreeNode *curr) {
     if (!curr)
@@ -52,7 +52,6 @@ void BinaryTree::deleteNode(TreeNode *node) {
 void BinaryTree::replace(TreeNode *node, TreeNode *newNode) {
     if (node == root) {
         root = newNode;
-        node = NULL;
         return;
     }
     if (node->isRightChild()) 
@@ -61,7 +60,6 @@ void BinaryTree::replace(TreeNode *node, TreeNode *newNode) {
         node->parent->left = newNode;
     if (newNode)
         newNode->parent = node->parent;
-    node = NULL;
 }
 void BinaryTree::deleteData(int data) {
     TreeNode *node = findNode(data);
@@ -154,4 +152,37 @@ void BinaryTree::printVertTree(TreeNode *curr, string prefix, bool isTail) {
         return;
     printVertTree(curr->right, prefix + (isTail?"   ":"│  "), false);
     printVertTree(curr->left, prefix + (isTail?"   ":"│  "), true);
+}
+
+void BalancedBinaryTree::backTrack(TreeNode *node) {
+    int rightHeight = height(node->right), leftHeight = height(node->left);
+    //cout<<node->data<<endl<<leftHeight<<" "<<rightHeight<<endl;
+    if (abs(rightHeight - leftHeight) >= 2) {
+        if (rightHeight > leftHeight)
+            rotateLeft(node);
+        else
+            rotateRight(node);
+    }
+}
+void BalancedBinaryTree::rotateRight(TreeNode *node) {
+    TreeNode *left = node->left, *temp = node->left->right;
+    replace(node, node->left);
+    left->right = node;
+    node->left = temp;
+
+    left->parent = node->parent;
+    node->parent = left;
+    if(temp)
+        temp->parent = node;
+}
+void BalancedBinaryTree::rotateLeft(TreeNode *node) {
+    TreeNode *right = node->right, *temp = node->right->left;
+    replace(node, node->right);
+    right->left = node;
+    node->right = temp;
+
+    right->parent = node->parent;
+    node->parent = right;
+    if(temp)
+        temp->parent = node;
 }

@@ -37,7 +37,7 @@ class BinaryTree {
         void printVertTree() { printVertTree(root); };
 
     private:
-        virtual void insertBackTrack(TreeNode *node) {}
+        virtual void backTrack(TreeNode *node) {}
 
     protected:
         void insert(int data, TreeNode **curr, TreeNode *par = NULL);
@@ -55,12 +55,20 @@ class BinaryTree {
         void printVertTree(TreeNode *curr, string prefix = "", bool isTail = true);
 };
 
+//This is implemented as AVL trees.
 class BalancedBinaryTree: public BinaryTree {
     public:
         BalancedBinaryTree():BinaryTree() {}
         BalancedBinaryTree(int data):BinaryTree(data) {}
         BalancedBinaryTree(TreeNode *r):BinaryTree(r) {}
 
+        bool isBalanced() { return isBalanced(root); }
+
     private:
-        void insertBackTrack(TreeNode *node);
+        void backTrack(TreeNode *node);
+    
+    protected:
+        bool isBalanced(TreeNode *node) { return abs(height(node->right) - height(node->left)) < 2; }
+        void rotateRight(TreeNode *node);
+        void rotateLeft(TreeNode *node);
 };
