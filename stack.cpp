@@ -1,22 +1,22 @@
 #include "stack.h"
 
 Stack::Stack() {
-    stackSize = -1;
+    currPosition = -1;
     capacity = 10;
     stack = new int[capacity];
 }
 void Stack::push(int data) {
-    stackSize++;
-    if (stackSize >= capacity) {
+    currPosition++;
+    if (currPosition >= capacity) {
         int *old = stack;
         capacity += 10;
         stack = new int[capacity];
         stack = old;
         delete old;
     }
-    stack[stackSize] = data;
+    stack[currPosition] = data;
 }
 int Stack::pop() {
-    stackSize--;
-    return stack[stackSize+1];
+    currPosition--;
+    return stack[currPosition+1];
 }
