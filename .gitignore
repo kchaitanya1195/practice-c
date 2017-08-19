@@ -1,5 +1,5 @@
 *.out
-*.exe
+a.exe
 .vscode
 node_modules
 *.un~
