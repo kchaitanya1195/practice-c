@@ -9,7 +9,9 @@ class Stack {
 
         void push(int data);
         int pop();
+        int peek() { return stack[stackSize]; }
         int size() { return stackSize + 1; }
+        bool empty() { return stackSize < 0; }
 
     private:
         int stackSize;

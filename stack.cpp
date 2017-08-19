@@ -1,16 +1,16 @@
 #include "stack.h"
 
 Stack::Stack() {
-    stackSize = 0;
+    stackSize = -1;
     capacity = 10;
     stack = new int[capacity];
 }
 void Stack::push(int data) {
     stackSize++;
-    if (stackSize > capacity) {
+    if (stackSize >= capacity) {
         int *old = stack;
-        stack = new int[capacity + 10];
         capacity += 10;
+        stack = new int[capacity];
         stack = old;
         delete old;
     }

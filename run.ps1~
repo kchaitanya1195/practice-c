@@ -1,0 +1,6 @@
+
+g++ ds.cpp binary-tree.cpp -std=c++14
+
+if($?) {
+    .\a.exe
+}

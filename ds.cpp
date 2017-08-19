@@ -1,14 +1,24 @@
 #include <iostream>
 #include "binary-tree.h"
+#include "stack.h"
 using namespace std;
 
-int main(){
-    testStack();
-    return 0;
-}
-
 void testStack(){
-
+    const int n = 6;
+    int a[n] = {1,2,3,4,5,6};
+    Stack *s = new Stack();
+    for (int i = 0; i < n; i++) {
+        s->push(a[i]);
+    }
+    cout<<s->pop()<<endl;
+    cout<<s->peek()<<endl;
+    cout<<s->pop()<<endl;
+    
+    for (int i = 0; i < 2 * n; i++) {
+        s->push(a[i%n]);
+    }
+    cout<<s->size()<<endl;
+    cout<<s->peek()<<endl;
 }
 void testBinaryTree(){
     const int n = 6;
@@ -33,4 +43,9 @@ void testBinaryTree(){
     //bt->deleteData(23);
     //bt->printVertTree();
     bbt->printVertTree();
+}
+
+int main(){
+    testStack();
+    return 0;
 }

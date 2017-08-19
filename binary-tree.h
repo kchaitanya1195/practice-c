@@ -2,6 +2,9 @@
 #include <stddef.h>
 using std::cout;
 using std::string;
+using std::endl;
+using std::abs;
+using std::max;
 
 class TreeNode {
     public:
