@@ -3,8 +3,23 @@
 #include "stack.h"
 #include "queue.h"
 #include "heap.h"
+#include "hash-table.h"
 using namespace std;
 
+void testHashTable() {
+    const int n = 6;
+    int a[n] = {5,10,55,60},
+        b[n] = {4, 15, 7, 20};
+    HashTable hs = HashTable(50);
+    for (int i=0;i<n;i++) {
+        hs.put(a[i], b[i]);
+    }
+
+    hs.test();
+
+    cout<<hs.get(55)<<" "<<hs.get(5)<<endl;
+    cout<<hs.get(9)<<endl;
+}
 void testHeap() {
     const int n = 6;
     int a[n] = {1,2,3,4,5,6};
@@ -77,6 +92,6 @@ void testBinaryTree() {
 }
 
 int main() {
-    testHeap();
+    testHashTable();
     return 0;
 }

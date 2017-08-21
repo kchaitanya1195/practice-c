@@ -2,4 +2,4 @@
 a.exe
 .vscode
 node_modules
-*.un~
+.run.ps1.un~
