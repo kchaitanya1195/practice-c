@@ -4,8 +4,22 @@
 #include "queue.h"
 #include "heap.h"
 #include "hash-table.h"
+#include "trie.h"
 using namespace std;
 
+void testTrie() {
+    const int n = 5;
+    const char *words[5] = {"hello", "help", "helloworld", "tree", "trie"};
+    Trie t = Trie();
+    for (int i=0;i<n;i++){
+        t.addWord(words[i]);
+    }
+    t.printTrie();
+    cout<<t.countPrefix("hell")<<endl;
+    cout<<t.countPrefix("hello")<<endl;
+    cout<<t.countPrefix("hel")<<endl;
+    cout<<t.countPrefix("tr")<<endl;
+}
 void testHashTable() {
     const int n = 6;
     int a[n] = {5,10,55,60},
@@ -90,8 +104,18 @@ void testBinaryTree() {
     //bt.printVertTree();
     bbt.printVertTree();
 }
+void test(const char *s) {
+    int l = strlen(s);
+    s+=l;
+    char c = s[0];
+    cout<<strlen(s)<<endl;
+    cout<<(c == '\0')<<endl;
+
+    cout<<"true"<<true + 1<<endl;
+}
 
 int main() {
-    testHashTable();
+    //test("hello");
+    testTrie();
     return 0;
 }
